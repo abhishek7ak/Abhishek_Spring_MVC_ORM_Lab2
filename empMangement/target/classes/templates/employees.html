@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>employee Mgmt</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>List Employee</h3>
+	<hr>
+	<!-- Add a button -->
+	<a th:href="@{/employees/new}"
+		class="btn btn-primary btn-sm mb-3">
+		Add Employee
+	</a>
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Employee First Name</th>
+				<th>Employee Last Name</th>
+				<th>Employee Email</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="emp : ${employees}">
+				<td th:text="${emp.empFirstName}" />	
+				<td th:text="${emp.empLastName}" />	
+				<td th:text="${emp.email}" />	
+				<td>
+				<div class="row">
+				
+					<div class="col-small">
+					<!-- Add "update" button/link -->
+					<a th:href="@{/employees/edit/{id}(id=${emp.empId})}" lass="btn btn-priamry btn-sm mb-3">
+						Update 				
+					</a>
+					</div>
+					<div class="col-small">
+					<!-- Add "delete" button/link -->					
+					<form th:href="@{/employees/delet/{id}(id=${emp.empId})}" lass="btn btn-priamry btn-sm mb-3"> 		
+								Delete
+					</a>
+					</div>
+				</div>	
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>
+
+
+
